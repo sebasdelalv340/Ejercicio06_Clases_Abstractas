@@ -51,7 +51,7 @@ class Circulo(color: String, val radio: Double): Figura(color) {
  * @param base La base del rectángulo.
  * @param altura La altura del rectángulo.
  */
-abstract class Rectangulo(color: String, val base: Double, val altura: Double): Figura(color) {
+class Rectangulo(color: String, val base: Double, val altura: Double): Figura(color) {
 
     /**
      * Calcula el área sobreescrita de Rectángulo.
@@ -80,7 +80,7 @@ abstract class Rectangulo(color: String, val base: Double, val altura: Double): 
  * @param lado2 La longitud del segundo lado del triángulo.
  * @param lado3 La longitud del tercer lado del triángulo.
  */
-class Triangulo(color: String, base: Double, altura: Double, val lado1: Double, val lado2: Double, val lado3: Double): Rectangulo(color, base, altura) { // Hereda de Rectángulo porque tienen las propiedades en común.
+class Triangulo(color: String, val base: Double, val altura: Double, val lado1: Double, val lado2: Double, val lado3: Double): Figura(color) { // Hereda de Rectángulo porque tienen las propiedades en común.
 
     /**
      * Calcula el área sobreescrita de Triángulo.
@@ -89,7 +89,6 @@ class Triangulo(color: String, base: Double, altura: Double, val lado1: Double, 
     override fun area(): Double {
         return (base * altura) / 2
     }
-
 
     /**
      * Calcula el perímetro sobreescrito de Triángulo.

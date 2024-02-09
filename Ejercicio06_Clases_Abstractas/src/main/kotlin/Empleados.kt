@@ -5,12 +5,19 @@
  * @property id El identificador único del empleado.
  */
 abstract class Empleado(val nombre: String, val id: Int) {
-
+    init{
+        require(nombre.isNotBlank()) {"El nombre no puede estar vacío."}
+        require(id > 0) {"El id debe ser mayor que cero."}
+    }
     /**
      * Calcula el salario del empleado.
      * @return El salario del empleado.
      */
     abstract fun calcularSalario(): Double
+
+    override fun toString(): String {
+        return "$nombre con ID-${"%04d".format(id)} tiene un salario de ${"%.2f".format(calcularSalario())}€ al mes."
+    }
 }
 
 
@@ -58,6 +65,10 @@ class EmpleadoFijo(nombre: String, id: Int, val salarioFijo: Double, val numPaga
      */
     override fun calcularSalario(): Double {
         return salarioFijo / numPagas
+    }
+
+    override fun toString(): String {
+        return super.toString()
     }
 }
 
